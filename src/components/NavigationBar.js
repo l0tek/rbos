@@ -43,20 +43,17 @@ export  class NavigationBar extends Component {
             stylePath: JSON.parse(localStorage.getItem('stylePath')),
             user: null
         }
-        console.log(this.state.stylePath)
     }
 
     handleBtnFlatClick = () => {
         this.setState({stylePath: '/styles/bootstrap-flatly.min.css'},function () {
             localStorage.setItem('stylePath', JSON.stringify(this.state.stylePath))   
-            console.log(this.state.stylePath);
         });
     }    
 
     handleBtnDarkClick = () => {
         this.setState({stylePath: '/styles/bootstrap-darkly.min.css'},function () {
             localStorage.setItem('stylePath', JSON.stringify(this.state.stylePath))   
-            console.log(this.state.stylePath);
         });   
     }      
 

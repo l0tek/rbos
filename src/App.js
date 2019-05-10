@@ -5,9 +5,13 @@ import {About} from './About';
 import {Contact} from './Contact';
 import {NoMatch} from './NoMatch';
 import {Test} from './Test';
+import {Protected} from './Protected';
 import {Login} from './components/Login';
 import {Logout} from './components/Logout';
-import {Protected} from './Protected';
+import withAuth from './components/withAuth';
+
+
+
 
 class App  extends Component {
 
@@ -19,7 +23,7 @@ class App  extends Component {
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/test" component={Test} />
-              <Route path="/protected" component={Protected} />
+              <Route path="/protected" component={withAuth(Protected)} />
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
               <Route component={NoMatch} />

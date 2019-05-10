@@ -61,7 +61,11 @@ export class Login extends Component {
     e.preventDefault();
     this.Auth.login(this.state.username,this.state.password)
         .then(res =>{
-          this.props.history.replace('/');
+          if (localStorage.getItem('withAuthPath') === null) {
+            this.props.history.replace('/');
+          }else{
+            this.props.history.replace(localStorage.getItem('withAuthPath'));
+          }
         })
         .catch(err =>{
             alert(err);

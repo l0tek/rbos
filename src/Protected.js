@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import {Layout} from './components/Layout';
 import {NavigationBar} from './components/NavigationBar';
-import {Jumbotron} from './components/Jumbotron';
 import AuthService from './components/AuthService';
-import withAuth from './components/withAuth';
 import { Button } from 'react-bootstrap';
 const Auth = new AuthService();
 
 
-export class Protected extends Component {
-
-        constructor(props){
-            super(props);
-        }    
+ export class Protected extends Component {
 
     handleLogout(){
         Auth.logout()
         this.props.history.replace('/login');
     }
-
+    
     render() {
         return (
         <div>
@@ -31,8 +24,3 @@ export class Protected extends Component {
         );
     }
     }
-
-const Secure = withAuth(Protected);
-
-
-export default Secure;
