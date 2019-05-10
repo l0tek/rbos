@@ -4,24 +4,17 @@ import {Home} from './Home';
 import {About} from './About';
 import {Contact} from './Contact';
 import {NoMatch} from './NoMatch';
-import {Theme} from './components/Theme';
 import {Layout} from './components/Layout';
 import {NavigationBar} from './components/NavigationBar';
 import {Jumbotron} from './components/Jumbotron';
 import {Test} from './Test';
-
-const StoreContext = React.createContext()
-
 
 class App  extends Component {
 
   render() {
     return (
     <React.Fragment>
-     <StoreContext.Provider value={this.state}>  
-    <Theme theme='' />     
      <NavigationBar />
-     </StoreContext.Provider>
         <Jumbotron />
         <Layout>
           <Router>

@@ -20,12 +20,38 @@ const Styles = styled.div`
 `;
 
 export  class NavigationBar extends Component {
-    handleClick = (event) => {
-        console.log('test');
-      }      
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            stylePath: JSON.parse(localStorage.getItem('stylePath')) || []
+        }
+
+        
+
+        console.log(this.state.stylePath)
+      }
+
+    handleBtnFlatClick = () => {
+        this.setState({stylePath: '/styles/bootstrap-flatly.min.css'},function () {
+            localStorage.setItem('stylePath', JSON.stringify(this.state.stylePath))   
+            console.log(this.state.stylePath);
+        });
+           
+    }    
+
+    handleBtnDarkClick = () => {
+        this.setState({stylePath: '/styles/bootstrap-darkly.min.css'},function () {
+            localStorage.setItem('stylePath', JSON.stringify(this.state.stylePath))   
+            console.log(this.state.stylePath);
+        });   
+    }      
+     
     render(){
         return (
         <Styles>
+            <link rel="stylesheet" type="text/css" href={this.state.stylePath} /> 
             <Navbar bg="primary" variant="dark" expand="lg">
                 <Navbar.Brand href="/">mnemonic.guru</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,9 +69,8 @@ export  class NavigationBar extends Component {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item onClick={this.handleClick}>Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    <Dropdown.Item onClick={this.handleBtnFlatClick}>Flatly</Dropdown.Item>
+                    <Dropdown.Item onClick={this.handleBtnDarkClick}>Darkly</Dropdown.Item>
                 </Dropdown.Menu>
                 </Dropdown>
                 </Form>                
