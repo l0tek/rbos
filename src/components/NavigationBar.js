@@ -43,6 +43,7 @@ export  class NavigationBar extends Component {
             stylePath: JSON.parse(localStorage.getItem('stylePath')),
             user: null
         }
+        this.prefix = process.env.PUBLIC_URL || '';
     }
 
     handleBtnFlatClick = () => {
@@ -66,10 +67,11 @@ export  class NavigationBar extends Component {
     render(){
         var loginButton = '';
         this.Auth = new AuthService();
+        console.log(process.env.PUBLIC_URL);
         if (this.Auth.loggedIn()) {
-          loginButton = <NavItem path="/logout" name="Logout" />
+          loginButton = <NavItem path={`${process.env.PUBLIC_URL}/logout`} name="Logout" />
         }else{
-          loginButton = <NavItem path="/login" name="Login" />
+          loginButton = <NavItem path={`${process.env.PUBLIC_URL}/login`} name="Login" />
         }         
         return (
         <Styles>
@@ -79,11 +81,11 @@ export  class NavigationBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
                 <Nav>
-                    <NavItem path="/" name="Home" />
-                    <NavItem path="/test" name="Lab" />
-                    <NavItem path="/about" name="About" />
-                    <NavItem path="/contact" name="Contact" />
-                    <NavItem path="/protected" name="Protected" />
+                    <NavItem path={`${process.env.PUBLIC_URL}/`} name="Home" />
+                    <NavItem path={`${process.env.PUBLIC_URL}/test`} name="Lab" />
+                    <NavItem path={`${process.env.PUBLIC_URL}/about`} name="About" />
+                    <NavItem path={`${process.env.PUBLIC_URL}/contact`} name="Contact" />
+                    <NavItem path={`${process.env.PUBLIC_URL}/protected`} name="Protected" />
                     {loginButton}
                 </Nav>
                 <Form inline>

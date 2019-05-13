@@ -15,17 +15,22 @@ import withAuth from './components/withAuth';
 
 class App  extends Component {
 
+  constructor(props) {
+    super(props);
+    this.prefix = process.env.PUBLIC_URL || '';
+  }
+
   render() {
     return (
-          <Router>
+          <Router basename={'localhost/rbos/'}>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/test" component={Test} />
-              <Route path="/protected" component={withAuth(Protected)} />
-              <Route path="/login" component={Login} />
-              <Route path="/logout" component={Logout} />
+              <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+              <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
+              <Route path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
+              <Route path={`${process.env.PUBLIC_URL}/test`} component={Test} />
+              <Route path={`${process.env.PUBLIC_URL}/protected`} component={withAuth(Protected)} />
+              <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
+              <Route path={`${process.env.PUBLIC_URL}/logout`} component={Logout} />
               <Route component={NoMatch} />
             </Switch>
           </Router>

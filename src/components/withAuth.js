@@ -9,7 +9,6 @@ export default function withAuth(AuthComponent) {
             this.state = {
                 user: null
             }
-            console.log(window.location.pathname);
             localStorage.setItem('withAuthPath',window.location.pathname);
         }
         
